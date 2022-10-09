@@ -1,0 +1,71 @@
+[
+  {
+    "nombre": "calculadora",
+    "descripcion": "objeto que sirve para hacer calculos matematicos",
+    "codigo": "1wert6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "precio": "100",
+    "stock": "1020",
+    "Id": 1,
+    "Timestamp": 1665354660333
+  },
+  {
+    "nombre": "calculadora",
+    "descripcion": "objeto que sirve para hacer calculos matematicos",
+    "codigo": "1wert6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "precio": "100",
+    "stock": "1020",
+    "Id": 2,
+    "Timestamp": 1665354663391
+  },
+  {
+    "nombre": "regla",
+    "descripcion": "objeto que sirve para medir",
+    "codigo": "2weht6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "precio": "200",
+    "stock": "900",
+    "Id": 3
+  },
+  {
+    "nombre": "calculadora",
+    "descripcion": "objeto que sirve para hacer calculos matematicos",
+    "codigo": "1wert6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "precio": "100",
+    "stock": "1020",
+    "Id": 4,
+    "Timestamp": 1665354665036
+  },
+  {
+    "nombre": "calculadora",
+    "descripcion": "objeto que sirve para hacer calculos matematicos",
+    "codigo": "1wert6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "precio": "100",
+    "stock": "1020",
+    "Id": 5,
+    "Timestamp": 1665354666108
+  },
+  {
+    "nombre": "calculadora",
+    "descripcion": "objeto que sirve para hacer calculos matematicos",
+    "codigo": "1wert6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "precio": "100",
+    "stock": "1020",
+    "Id": 6,
+    "Timestamp": 1665357256218
+  },
+  {
+    "nombre": "calculadora",
+    "descripcion": "objeto que sirve para hacer calculos matematicos",
+    "codigo": "1wert6",
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "precio": "100",
+    "stock": "1020",
+    "Id": 7,
+    "Timestamp": 1665357580312
+  }
+]
