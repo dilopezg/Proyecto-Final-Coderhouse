@@ -1,6 +1,4 @@
 const fs = require('fs')
-const { isNullOrUndefined } = require('util')
-const Productos = require('./class_productos')
   
 class Carrito{
         
@@ -35,10 +33,8 @@ class Carrito{
             const objeto = {}
             const contenidoJSON = await this.leerArchivo(this.archivo)
             const lengthIdList = contenidoJSON.map(item =>item.Id).length
-            const lastId = contenidoJSON.map(item =>item.Id)[lengthIdList-1]
-            
-
-            if (contenidoJSON.length === 0){
+            const lastId = contenidoJSON[lengthIdList-1].Id
+            if (lengthIdList === 0){
                 objeto['Id'] = 1
                 objeto['Timestamp'] = Date.now()
                 objeto['Productos'] = []
@@ -46,7 +42,6 @@ class Carrito{
                 await this.escribirArchivo(this.archivo, JSON.stringify(contenidoJSON, null, 2))
                 return (`Se creo exitosamente el carrito con Id: ${objeto['Id']}`)
             }
-
             else{
                 objeto['Id'] = lastId + 1
                 objeto['timestamp'] = Date.now()
@@ -85,9 +80,8 @@ class Carrito{
          
          try {                
              const contenidoJSON = await this.leerArchivo(this.archivo)
-             const idList = contenidoJSON.map(item =>item.Id)
              const Carrito = contenidoJSON.find(item => item.Id == numberId);             
-             if (idList.includes(numberId)){
+             if (Carrito+1){
                  return (Carrito)
                 }
                 else{
@@ -105,9 +99,8 @@ class Carrito{
             const objeto = {...newProducto}
             objeto['timestamp'] = Date.now()
             const contenidoJSON = await this.leerArchivo(this.archivo)
-            const idList = contenidoJSON.map(item =>item.Id)
-            const indexId = (contenidoJSON.map(item =>item.Id)).indexOf(carritoId)
-            if (idList.includes(carritoId)){                
+            const indexId = contenidoJSON.findIndex(item => item.Id === carritoId)
+            if (indexId+1){                
                 const Carrito = await this.getById(carritoId);
                 Carrito.productos.push(objeto)
                 contenidoJSON[indexId] = Carrito
@@ -126,13 +119,11 @@ class Carrito{
     async deleteById(carritoId,productoId){
         try{
             const contenidoJSON = await this.leerArchivo(this.archivo)
-            const idCarritoList = contenidoJSON.map(item =>item.Id)
-            const indexId = (contenidoJSON.map(item =>item.Id)).indexOf(carritoId)
-            if (idCarritoList.includes(carritoId)){
+            const indexId = contenidoJSON.findIndex(item => item.Id === carritoId)
+            if (indexId+1){
                 const Carrito = await this.getById(carritoId);         
-                const indexDelete = Carrito.productos.map(item =>item.Id).indexOf(productoId)
-                const idProductoList = Carrito.productos.map(item =>item.Id)
-                if (idProductoList.includes(productoId)){
+                const indexDelete = Carrito.productos.findIndex(item => item.Id === productoId)
+                if (indexDelete+1){
                     Carrito.productos.splice(indexDelete,1)
                     contenidoJSON[indexId] = Carrito
                     await this.escribirArchivo(this.archivo, JSON.stringify(contenidoJSON, null, 2))
@@ -154,9 +145,8 @@ class Carrito{
     async deleteAll(carritoId){
         try{
             const contenidoJSON = await this.leerArchivo(this.archivo)
-            const carritoDelete = contenidoJSON.map(item =>item.Id).indexOf(carritoId)
-            const idList = contenidoJSON.map(item =>item.Id)
-            if (idList.includes(carritoId)){
+            const carritoDelete = contenidoJSON.findIndex(item => item.Id === carritoId)
+            if (carritoDelete+1){
                 contenidoJSON.splice(carritoDelete,1);
                 await this.escribirArchivo(this.archivo, JSON.stringify(contenidoJSON, null, 2))
                 return (`Se borro exitosamente el carrito con Id:${carritoId}`)

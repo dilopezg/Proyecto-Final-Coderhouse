@@ -33,10 +33,9 @@ class Productos{
             const objeto = {...newProducto}
             const contenidoJSON = await this.leerArchivo(this.archivo)
             const lengthIdList = contenidoJSON.map(item =>item.Id).length
-            const lastId = contenidoJSON.map(item =>item.Id)[lengthIdList-1]
-            
+            const lastId = contenidoJSON[lengthIdList-1].Id            
 
-            if (contenidoJSON.length === 0){
+            if (lengthIdList === 0){
                 objeto['Id'] = 1
                 objeto['Timestamp'] = Date.now()
                 contenidoJSON.push(objeto)
@@ -60,12 +59,11 @@ class Productos{
     
     async getById (numberId) {
 
-        try {
-                
-            const contenidoJSON = await this.leerArchivo(this.archivo)
-            const idList = contenidoJSON.map(item =>item.Id)
-            const indexId = (contenidoJSON.map(item =>item.Id)).indexOf(numberId)
-            if (idList.includes(numberId)){
+        try {                
+            const contenidoJSON = await this.leerArchivo(this.archivo) 
+            const indexId = contenidoJSON.findIndex(item => item.Id === numberId)  
+            console.log(indexId);         
+            if (indexId+1){
                 return (contenidoJSON[indexId])
             }
             else{
@@ -90,7 +88,7 @@ class Productos{
     async deleteById(numberId){
         try{
             const contenidoJSON = await this.leerArchivo(this.archivo)
-            const indexDelete = (contenidoJSON.map(item =>item.Id)).indexOf(numberId)
+            const indexDelete = contenidoJSON.findIndex(item => item.Id === numberId)
             contenidoJSON.splice(indexDelete,1)
             await this.escribirArchivo(this.archivo, JSON.stringify(contenidoJSON, null, 2))
             return (`Se borro exitosamente el producto con Id: ${numberId}`);
@@ -117,9 +115,8 @@ class Productos{
             const objeto = {...data}
             objeto['Id']= numberId
             const contenidoJSON = await this.leerArchivo(this.archivo)
-            const idList = contenidoJSON.map(item =>item.Id)
-            const indexId = (contenidoJSON.map(item =>item.Id)).indexOf(numberId)
-            if (idList.includes(numberId)){
+            const indexId = contenidoJSON.findIndex(item => item.Id === numberId)
+            if (indexId+1){
                 contenidoJSON[indexId] = objeto
                 await this.escribirArchivo(this.archivo, JSON.stringify(contenidoJSON, null, 2))
                 return ({Actualizado_Id: numberId });

@@ -18,7 +18,6 @@ router.get('/:id/productos', async(req, res) => {
 router.post('/:id/productos', async(req, res) => {
   let { body : data } = req
   const numberId = Number(req.params.id)
-  console.log(numberId);
   res.status(200).json(await carrito.saveProducto(numberId,data));
 })
 
