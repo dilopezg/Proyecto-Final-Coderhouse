@@ -11,24 +11,24 @@ router.post('/', async(_, res) => {
 })
 
 router.get('/:id/productos', async(req, res) => {
-    const carritoId= Number(req.params.id)
+    const carritoId= req.params.id
     res.status(200).json(await carritosDao.getAllCarrito(carritoId))
 })
 
 router.post('/:id/productos', async(req, res) => {
   let { body : data } = req
-  const numberId = Number(req.params.id)
+  const numberId = req.params.id
   res.status(200).json(await carritosDao.saveProducto(numberId,data));
 })
 
 router.delete('/:id', async(req, res) => {
-    const numberId = Number(req.params.id)
+    const numberId = req.params.id
     res.status(200).json(await carritosDao.deleteAllCarrito(numberId)); 
   })
 
 router.delete('/:id/productos/:id_prod', async(req, res) => {
-  const carritoId= Number(req.params.id)
-  const productoId = Number(req.params.id_prod)
+  const carritoId= req.params.id
+  const productoId = req.params.id_prod
   res.status(200).json(await carritosDao.deleteByIdCarrito(carritoId,productoId)); 
 })
 

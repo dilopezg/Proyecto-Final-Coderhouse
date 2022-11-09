@@ -15,7 +15,8 @@
     "express": "^4.18.1",
     "express-useragent": "^1.0.15",
     "firebase-admin": "^11.2.0",
-    "mongoose": "^6.6.7"
+    "mongoose": "^6.6.7",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.2",

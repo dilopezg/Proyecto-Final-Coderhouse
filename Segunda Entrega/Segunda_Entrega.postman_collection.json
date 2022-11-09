@@ -32,7 +32,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "2"
+							"value": ""
 						}
 					]
 				}
@@ -98,7 +98,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "2"
+							"value": "44c175d0-ded4-4ee0-bfa1-ec5d92ff1463"
 						}
 					]
 				}
@@ -125,7 +125,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "2"
+							"value": "44c175d0-ded4-4ee0-bfa1-ec5d92ff1463"
 						}
 					]
 				}
@@ -153,7 +153,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "2"
+							"value": "c480d1f9-ce8a-4224-991e-cd805858bc3e"
 						}
 					]
 				}
@@ -188,7 +188,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"Id\":2,\r\n\"nombre\":\"regla\",\r\n\"descripcion\":\"objeto que sirve para medir\",\r\n\"codigo\":\"2weht6\",\r\n\"foto\":\"https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png\",\r\n\"precio\":\"200\",\r\n\"stock\":\"900\"}",
+					"raw": "{\"_id\":\"4dfe0757-8052-4deb-8ae1-5849e661f411\",\r\n\"nombre\":\"regla\",\r\n\"descripcion\":\"objeto que sirve para medir\",\r\n\"codigo\":\"2weht6\",\r\n\"foto\":\"https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png\",\r\n\"precio\":\"200\",\r\n\"stock\":\"900\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -211,7 +211,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "2"
+							"value": "c480d1f9-ce8a-4224-991e-cd805858bc3e"
 						}
 					]
 				}
@@ -238,7 +238,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "5"
+							"value": "c480d1f9-ce8a-4224-991e-cd805858bc3e"
 						}
 					]
 				}
@@ -267,11 +267,11 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "3"
+							"value": "c480d1f9-ce8a-4224-991e-cd805858bc3e"
 						},
 						{
 							"key": "id_prod",
-							"value": "2"
+							"value": "4dfe0757-8052-4deb-8ae1-5849e661f411"
 						}
 					]
 				}

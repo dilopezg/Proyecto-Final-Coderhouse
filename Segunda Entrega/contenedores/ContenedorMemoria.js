@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export default class ContenedorMemoria {
 
     constructor() {
@@ -8,22 +10,11 @@ export default class ContenedorMemoria {
 
         try {
             const objeto = {...newProducto}
-            const lengthIdList = this.elementos.map(item =>item.Id).length
-            const lastId = this.elementos[lengthIdList-1].Id            
-
-            if (lengthIdList === 0){
-                objeto['Id'] = 1
-                objeto['Timestamp'] = Date.now()
-                this.elementos.push(objeto)
-                return (`Se agrego exitosamente el producto con Id: ${objeto['Id']}`)
-            }
-
-            else{
-                objeto['Id'] = lastId + 1
-                objeto['Timestamp'] = Date.now()
-                this.elementos.push(objeto)
-                return (`Se agrego exitosamente el producto con Id: ${objeto['Id']}`)
-            }
+            objeto['Id'] = uuidv4();
+            objeto['Timestamp'] = Date.now()
+            this.elementos.push(objeto)
+            return (`Se agrego exitosamente el producto con Id: ${objeto['Id']}`)
+            
         }
             catch (error) {
             console.log('😱😱😱 Ocurrion un error durante la operación y no se pudo agregar el producto:', error);
@@ -34,22 +25,12 @@ export default class ContenedorMemoria {
 
         try {
             const objeto = {}
-            const lengthIdList = this.elementos.map(item =>item.Id).length
-            const lastId = this.elementos[lengthIdList-1].Id
-            if (lengthIdList === 0){
-                objeto['Id'] = 1
-                objeto['Timestamp'] = Date.now()
-                objeto['Productos'] = []
-                this.elementos.push(objeto)
-                return (`Se creo exitosamente el carrito con Id: ${objeto['Id']}`)
-            }
-            else{
-                objeto['Id'] = lastId + 1
-                objeto['timestamp'] = Date.now()
-                objeto['productos'] = []
-                this.elementos.push(objeto)
-                return (`Se creo exitosamente el carrito con Id: ${objeto['Id']}`)
-            }
+            objeto['Id'] = uuidv4();
+            objeto['Timestamp'] = Date.now()
+            objeto['Productos'] = []
+            this.elementos.push(objeto)
+            return (`Se creo exitosamente el carrito con Id: ${objeto['Id']}`)
+            
         }
             catch (error) {
             console.log('😱😱😱 Ocurrion un error durante la operación y no se pudo crear el carrito:', error);
@@ -64,7 +45,7 @@ export default class ContenedorMemoria {
             const indexId = this.elementos.findIndex(item => item.Id === carritoId)
             if (indexId+1){                
                 const Carrito = await this.getById(carritoId);
-                Carrito.productos.push(objeto)
+                Carrito.Productos.push(objeto)
                 this.elementos[indexId] = Carrito
                 return (`Se agrego exitosamente producto al carrito con Id: ${carritoId}`)
             }
@@ -107,11 +88,11 @@ export default class ContenedorMemoria {
         try {                
             const Carrito = await this.getById(carritoId)
             if (Carrito['Id']> 0){
-                if (Carrito.productos == undefined || Carrito.productos.length === 0){
+                if (Carrito.Productos == undefined || Carrito.Productos.length === 0){
                     return ({error: 'carrito no tiene productos'});
                 }
                 else {
-                    return (Carrito.productos)
+                    return (Carrito.Productos)
                 }
             }          
             else {
@@ -139,9 +120,9 @@ export default class ContenedorMemoria {
             const indexId = this.elementos.findIndex(item => item.Id === carritoId)
             if (indexId+1){
                 const Carrito = await this.getById(carritoId);         
-                const indexDelete = Carrito.productos.findIndex(item => item.Id === productoId)
+                const indexDelete = Carrito.Productos.findIndex(item => item.Id === productoId)
                 if (indexDelete+1){
-                    Carrito.productos.splice(indexDelete,1)
+                    Carrito.Productos.splice(indexDelete,1)
                     this.elementos[indexId] = Carritoreturn (`Se borro exitosamente el producto con Id: ${productoId}`);
                 }
                 else{

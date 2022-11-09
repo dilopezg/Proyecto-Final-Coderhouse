@@ -20,7 +20,7 @@ router.post('/', async(req, res) => {
 })
 
 router.get('/:id?', async(req, res) => {  
-  const numberId = Number(req.params.id)
+  const numberId = req.params.id
   if (numberId == ':id'){
     res.status(200).json(await productosDao.getAll());
   }
@@ -45,7 +45,7 @@ router.put('/:id', async(req, res) => {
 router.delete('/:id', async(req, res) => {
   const path = req.originalUrl
 	const method = req.method;
-  const numberId = Number(req.params.id)
+  const numberId = req.params.id
   if (administrador){
     res.status(200).json(await productosDao.deleteById(numberId)); 
   }

@@ -6,7 +6,7 @@ export default class CarritosDaoMongoDB extends ContenedorMongoDB {
 
   constructor() {
     super('Carrito', new Schema({
-      _id: { type: Number, require: true },
+      _id: { type: String, require: true },
       Timestamp: { type: String, required: true },
       productos: { type: [], require: true },
     }))

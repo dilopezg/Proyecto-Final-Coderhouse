@@ -1,0 +1,48 @@
+[
+  {
+    "Id": "11135de4-be0a-482f-8ff9-5205bdc306f5",
+    "Timestamp": 1667919851418,
+    "Productos": [
+      {
+        "_id": 3,
+        "nombre": "regla",
+        "descripcion": "objeto que sirve para medir",
+        "codigo": "2weht6",
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "precio": "200",
+        "stock": "900",
+        "timestamp": 1667948364954
+      },
+      {
+        "_id": "4dfe0757-8052-4deb-8ae1-5849e661f411",
+        "nombre": "regla",
+        "descripcion": "objeto que sirve para medir",
+        "codigo": "2weht6",
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "precio": "200",
+        "stock": "900",
+        "timestamp": 1667948454811
+      },
+      {
+        "id": "4dfe0757-8052-4deb-8ae1-5849e661f411",
+        "nombre": "regla",
+        "descripcion": "objeto que sirve para medir",
+        "codigo": "2weht6",
+        "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+        "precio": "200",
+        "stock": "900",
+        "timestamp": 1667948650401
+      }
+    ]
+  },
+  {
+    "Id": "4dfe0757-8052-4deb-8ae1-5849e661f411",
+    "Timestamp": 1667947845965,
+    "Productos": []
+  },
+  {
+    "Id": "400f21d0-0280-4c42-9b32-0f4229148d1c",
+    "Timestamp": 1667948198976,
+    "Productos": []
+  }
+]

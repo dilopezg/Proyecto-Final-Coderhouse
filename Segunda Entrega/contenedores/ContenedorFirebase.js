@@ -1,5 +1,6 @@
 import firebase from 'firebase-admin'; 
 import config from '../config.js'
+import { v4 as uuidv4 } from 'uuid';
 
 firebase.initializeApp({credential: firebase.credential.cert(config.firebase)});
 
@@ -15,25 +16,14 @@ export default class ContenedorFirebase {
 
         try {
             const objeto = {...newProducto}
-            const contenido = await this.getAll()
-            const lengthIdList = contenido.map(item =>item._id).length
-            if (lengthIdList === 0){
-                const _id = 1
-                objeto['_id'] = 1
-                objeto['Timestamp'] = Date.now()
-                const doc = this.query.doc(`${_id}`) 
-                await doc.create(objeto)
-                return (`Se agrego exitosamente el producto`)
-            }
-            else{
-                const lastId = contenido[lengthIdList-1]._id
-                objeto['_id'] = lastId + 1
-                const _id = lastId + 1
-                objeto['Timestamp'] = Date.now()
-                const doc = this.query.doc(`${_id}`) 
-                await doc.create(objeto)
-                return (`Se agrego exitosamente el producto`)
-            }            
+            const contenido = await this.getAll()            
+            const _id = uuidv4();
+            objeto['_id'] = _id 
+            objeto['Timestamp'] = Date.now()
+            const doc = this.query.doc(`${_id}`) 
+            await doc.create(objeto)
+            return (`Se agrego exitosamente el producto`)            
+                        
         }
             catch (error) {
             console.log('😱😱😱 Ocurrion un error durante la operación y no se pudo agregar el producto:', error);
@@ -45,26 +35,13 @@ export default class ContenedorFirebase {
         try {
             const objeto = {}
             const contenido = await this.getAll()
-            const lengthIdList = contenido.map(item =>item._id).length
-            if (lengthIdList === 0){
-                const _id = 1
-                objeto['_id'] = 1
-                objeto['Timestamp'] = Date.now()
-                objeto['productos'] = []
-                const doc = this.query.doc(`${_id}`) 
-                await doc.create(objeto)
-                return (`Se creo exitosamente el carrito`)
-            }
-            else{
-                const lastId = contenido[lengthIdList-1]._id
-                const _id = lastId + 1
-                objeto['_id'] = lastId + 1
-                objeto['Timestamp'] = Date.now()
-                objeto['productos'] = []
-                const doc = this.query.doc(`${_id}`) 
-                await doc.create(objeto)
-                return (`Se creo exitosamente el carrito`)
-            }            
+            const _id = uuidv4();
+            objeto['_id'] = _id
+            objeto['Timestamp'] = Date.now()
+            objeto['productos'] = []
+            const doc = this.query.doc(`${_id}`) 
+            await doc.create(objeto)
+            return (`Se creo exitosamente el carrito`)                        
         }
             catch (error) {
             console.log('😱😱😱 Ocurrion un error durante la operación y no se pudo crear el carrito:', error);
@@ -77,7 +54,7 @@ export default class ContenedorFirebase {
             const objeto = {...newProducto}
             objeto['timestamp'] = Date.now()
             const contenido = await this.getAll()
-            const indexId = contenido.findIndex(item => item._id === Number(carritoId))
+            const indexId = contenido.findIndex(item => item._id === carritoId)
             if (indexId+1){                                
                 const Carrito = await this.getById(carritoId);
                 Carrito.productos.push(objeto)
@@ -98,7 +75,7 @@ export default class ContenedorFirebase {
     async getById (numberId) {
 
         try {
-            const snapshot = await this.query.where('_id', '==', Number(numberId)).get()
+            const snapshot = await this.query.where('_id', '==', numberId).get()
             if (!snapshot.empty){
                 return (snapshot.docs[0].data())
             }
@@ -146,9 +123,9 @@ export default class ContenedorFirebase {
     async deleteById(numberId){
         try{
             const contenido = await this.getAll()
-            const indexId = contenido.findIndex(item => item._id === Number(numberId))
+            const indexId = contenido.findIndex(item => item._id === numberId)
             if (indexId+1){
-                const snapshot = await this.query.where('_id', '==', Number(numberId)).get()
+                const snapshot = await this.query.where('_id', '==', numberId).get()
                 const doc = this.query.doc(snapshot.docs[0].id)
                 await doc.delete()
                 return (`Se borro exitosamente el producto con Id: ${numberId}`);
@@ -165,10 +142,10 @@ export default class ContenedorFirebase {
     async deleteByIdCarrito(carritoId,productoId){
         try{
             const contenido = await this.getAll()
-            const indexId = contenido.findIndex(item => item._id === Number(carritoId))
+            const indexId = contenido.findIndex(item => item._id === carritoId)
             if (indexId+1){
                 const Carrito = await this.getById(carritoId);         
-                const indexDelete = Carrito.productos.findIndex(item => item._id === Number(productoId))
+                const indexDelete = Carrito.productos.findIndex(item => item._id === productoId)
                 if (indexDelete+1){
                     Carrito.productos.splice(indexDelete,1)
                     const doc = this.query.doc(`${carritoId}`) 
@@ -204,7 +181,7 @@ export default class ContenedorFirebase {
     async deleteAllCarrito(carritoId){
         try{
             const contenido = await this.getAll()
-            const carritoDelete = contenido.findIndex(item => item._id === Number(carritoId))
+            const carritoDelete = contenido.findIndex(item => item._id === carritoId)
             if (carritoDelete+1){
                 const doc = this.query.doc(`${carritoId}`) 
                 await doc.delete()
@@ -223,10 +200,11 @@ export default class ContenedorFirebase {
     async updateById(data,numberId){
         try{
             const objeto = {...data}
-            objeto['_id']= Number(numberId)
+            objeto['_id']= numberId
             const contenido = await this.getAll()
-            const indexId = contenido.findIndex(item => item._id === Number(numberId))
+            const indexId = contenido.findIndex(item => item._id === numberId)
             if (indexId+1){
+                console.log(objeto)
                 const doc = this.query.doc(`${numberId}`) 
                 await doc.update(objeto)
                 return ({Actualizado_id: numberId });

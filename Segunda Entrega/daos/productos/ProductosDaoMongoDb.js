@@ -7,7 +7,7 @@ export default class ProductosDaoMongoDB extends ContenedorMongoDB {
     constructor() {
         console.log('ProductosDaoMongoDB Here')
         super('Producto', new Schema({  
-          _id: { type: Number, require: true },        
+          _id: { type: String, require: true },        
           nombre: { type: String, require: true },
           descripcion : { type: String, require: true },
           codigo : { type: String, require: true },
