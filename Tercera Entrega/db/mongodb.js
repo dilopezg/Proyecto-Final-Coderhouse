@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import config from '../config.js'
 
-const init = async () => {
+export default function init (){
   try {    
     mongoose.connect(config.mongoDB.URI)
     console.log('Database connected.')
@@ -10,5 +10,5 @@ const init = async () => {
   }
 }
 
-export default { init };
+
 

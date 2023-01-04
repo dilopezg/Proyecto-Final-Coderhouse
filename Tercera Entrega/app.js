@@ -6,15 +6,19 @@ import passport from'passport';
 import {Strategy as LocalStrategy} from'passport-local';
 import bcrypt from 'bcrypt';
 import UserModel from './models/user.js';
-import { init } from './db/mongodb.js';
+import init  from './db/mongodb.js';
 import mongoose from 'mongoose';
 import minimist from "minimist";
 import os from "os";
 import cluster from "cluster";
+import session from'express-session';
+import handlebars from'express-handlebars';
 
 
 import productos from './router/productos.js'
 import carrito from './router/carrito.js'
+
+
 
 const params = minimist(process.argv.slice(2), {
   alias : {
@@ -43,12 +47,13 @@ if(MODE === "cluster" && cluster.isPrimary){
   })
 } else {
 
-  const URL = { init }
+  const app = express()
+
+  const URL = init() 
 
   mongoose.connect(URL)
 
-  const io = require('socket.io')(http);
-
+  
   passport.use('sign-in', new LocalStrategy({ usernameField: 'email',}, (email, password, done) => {
               UserModel.findOne({ email })
                   .then((user) => {
@@ -147,7 +152,7 @@ if(MODE === "cluster" && cluster.isPrimary){
   app.set("view engine", "hbs");
   app.set("views", __dirname + '/views');
 
-  const app = express()
+  
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
