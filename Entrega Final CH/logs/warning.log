@@ -1,0 +1,27 @@
+
+{"level":"error","message":{"code":11000}}
+{"level":"warn","message":"Ya existe este usuario"}
+{"level":"error"}
+{"level":"info","message":{"accountSid":"AC5ed97c17b791be5fdb9421f03af35f94","apiVersion":"2010-04-01","body":"Detectamos que prueba1@test.com intenta loguearse!","dateCreated":"2022-08-18T21:08:47.000Z","dateSent":null,"dateUpdated":"2022-08-18T21:08:47.000Z","direction":"outbound-api","errorCode":null,"errorMessage":null,"from":"whatsapp:+14155238886","messagingServiceSid":null,"numMedia":"0","numSegments":"1","price":null,"priceUnit":null,"sid":"SM50529be47316d74acabe1557f3a3be66","status":"queued","subresourceUris":{"media":"/2010-04-01/Accounts/AC5ed97c17b791be5fdb9421f03af35f94/Messages/SM50529be47316d74acabe1557f3a3be66/Media.json"},"to":"whatsapp:+5492995220682","uri":"/2010-04-01/Accounts/AC5ed97c17b791be5fdb9421f03af35f94/Messages/SM50529be47316d74acabe1557f3a3be66.json"}}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"warn","message":"❌ Usuario desconectado"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":{"accountSid":"AC5ed97c17b791be5fdb9421f03af35f94","apiVersion":"2010-04-01","body":"Detectamos que prueba1@test.com intenta loguearse!","dateCreated":"2022-08-18T23:14:55.000Z","dateSent":null,"dateUpdated":"2022-08-18T23:14:55.000Z","direction":"outbound-api","errorCode":null,"errorMessage":null,"from":"whatsapp:+14155238886","messagingServiceSid":null,"numMedia":"0","numSegments":"1","price":null,"priceUnit":null,"sid":"SMdcea0f32fb42a9e006b726274c14ed38","status":"queued","subresourceUris":{"media":"/2010-04-01/Accounts/AC5ed97c17b791be5fdb9421f03af35f94/Messages/SMdcea0f32fb42a9e006b726274c14ed38/Media.json"},"to":"whatsapp:+5492995220682","uri":"/2010-04-01/Accounts/AC5ed97c17b791be5fdb9421f03af35f94/Messages/SMdcea0f32fb42a9e006b726274c14ed38.json"}}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"warn","message":"❌ Usuario desconectado"}
+{"level":"warn","message":"❌ Usuario desconectado"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"warn","message":"❌ Usuario desconectado"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}
+{"level":"info","message":"💻 Nuevo usuario conectado!"}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Support</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Soporte al cliente las 24hs!</h1>
+    <fieldset>
+      <form onSubmit="addMessage();return false">
+        Nombre
+        <input type="text" name="nombre" id="nombre" />
+        Mensaje
+        <input type="text" name="message" id="message" />
+        <button id="send" type="submit">Enviar</button>
+      </form>
+    </fieldset>
+    <fieldset>
+      <h1>Mensajes</h1>
+      <ul id="messages"></ul>
+    </fieldset>
+    <script>
+      const socket = io();
+      socket.on("messageBack", (data) => {
+        let innerText = "";
+        data.map((message) => {
+          innerText += `
+        <li>
+          <div>Autor: ${message.nombre}</div>
+          <div>Mensaje: ${message.mensaje}</div>
+        </li>
+        `;
+        });
+        document.getElementById("messages").innerHTML = innerText;
+      });
+
+      function addMessage() {
+        const nombre = document.getElementById("nombre").value;
+        const mensaje = document.getElementById("message").value;
+        socket.emit("messageFront", {
+          nombre,
+          mensaje,
+        });
+        document.getElementById("message").value = "";
+      }
+    </script>
+  </body>
+</html>
