@@ -1,16 +1,9 @@
 import mongoose from "mongoose";
 
-const Schema = new mongoose.Schema(
-  {
-    nombre: String,
-    precio: Number,
-    descripcion: String,
-    codigo: String,
-    foto: String,
-  },
-  {
-    timestamps: true,
-  }
+const Schema = new mongoose.Schema(  
+  {id: { type: String, require: true }},
+  {timestamp: { type: String, required: true }},
+  {productos: { type: [], require: true }}
 );
 
 export const CarritoModel = mongoose.model("Carrito", Schema);

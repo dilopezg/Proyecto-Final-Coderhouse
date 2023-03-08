@@ -38,7 +38,7 @@ export async function getProducto(req, res) {
     const id = req.params.id;
     const producto = await prodInFactory.getById(id);
     if (producto === null) {
-      res.status(400).json({ error: "El producto No Existe" });
+      res.status(404).json({ error: "El producto No Existe" });
     } else {
       res.status(200).json(asDto(producto));
     }

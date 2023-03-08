@@ -50,7 +50,7 @@ class proDAO extends FactoryClass {
         descripcion: nuevoProd.descripcion,
         codigo: nuevoProd.codigo,
         foto: nuevoProd.foto,
-      });
+      }, { new: true });
       return prodUpdated;
     } catch (error) {
       return `☠ ${error} `;
